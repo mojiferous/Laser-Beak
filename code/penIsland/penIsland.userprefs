@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/enemySpawner.js">
+    <Files>
+      <File FileName="Assets/Scripts/enemySpawner.js" Line="12" Column="70" />
+      <File FileName="Assets/Scripts/birdMover.js" Line="20" Column="58" />
+      <File FileName="Assets/Scripts/enemyMover.js" Line="5" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
