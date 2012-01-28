@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\birdMover.js" />
      <Compile Include="Assets\Scripts\enemyMover.js" />
      <Compile Include="Assets\Scripts\enemySpawner.js" />
+     <Compile Include="Assets\Scripts\ghostMover.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\CameraRelativeControl.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FirstPersonControl.js" />
      <Compile Include="Assets\Standard Assets (Mobile)\Scripts\FollowTransform.js" />

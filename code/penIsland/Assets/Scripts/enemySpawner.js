@@ -5,7 +5,6 @@ function Start () {
       var cube = Instantiate(enemyPrefab, Vector3 (0, 0, 0), Quaternion.identity);
       var enemyArray = new Array();
       enemyArray.push(cube);
-      print(enemyArray);
       /*var top : float = 8.0;
       var bottom : float = -1.5;
       var spawnPoint : float = Random.Range(bottom, top);
