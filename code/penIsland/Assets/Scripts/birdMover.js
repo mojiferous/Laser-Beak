@@ -1,9 +1,5 @@
-/// This script moves the character controller forward 
-/// and sideways based on the arrow keys.
-/// It also jumps when pressing space.
-/// Make sure to attach a character controller to the same game object.
-/// It is recommended that you make only one call to Move or SimpleMove per frame.    
 
+var laserPrefab: Transform; 
 var speed : float = 6.0;
 
 private var moveDirection : Vector3 = Vector3.zero;
@@ -18,6 +14,8 @@ function Update() {
     	moveDirection = Vector3(0, Input.GetAxis("Move"), 0);
     	processMove = true;
     } else {
+    
+    
     	if (this.transform.position.y > 7.736407) {
     		if (Input.GetAxis("Move") < 0) {
     			moveDirection = Vector3(0, Input.GetAxis("Move"), 0);
@@ -36,5 +34,9 @@ function Update() {
 		moveDirection *= speed;
 	      
 	    controller.Move(moveDirection * Time.deltaTime);
+    }
+    if (Input.GetAxis("Fire1")) {
+      var laser = Instantiate(laserPrefab, Vector3 (0.3915816, 3.344011, 10.69799), Quaternion.identity);
+      laserPrefab.transform.localScale += Vector3(0.1,0,0);
     }
 }
