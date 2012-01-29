@@ -3,11 +3,13 @@ var fired: boolean = false;
 var laserFired : boolean = false;
 var laserSpeed: float = 5;
 var laser;
+var animScript;
+animScript = GetComponent(birdAnimation);
 
 
 function Update () {
 	if (fired && !laserFired) {
-		laserFire();
+		//laserFire();
 	}
 	if (laserFired) {
     laser.position.x -= laserSpeed * .2;
@@ -21,5 +23,6 @@ function Update () {
 function laserFire() {
 	fired = false;
 	laserFired = true;
-  laser = Instantiate(laserPrefab, Vector3(transform.position.x - 30, transform.position.y, transform.position.z), transform.rotation);
+	animScript.rowNumber = 1;
+  	laser = Instantiate(laserPrefab, Vector3(transform.position.x - 5, transform.position.y - .1, transform.position.z), transform.rotation);
 }

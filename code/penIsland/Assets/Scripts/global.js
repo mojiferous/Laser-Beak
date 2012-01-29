@@ -1,5 +1,4 @@
 var enemyArray = new Array();
-
 var prefab: Transform;
 var boundLeft : float = -1.03721881;
 var boundRight : float = 11.48046;
@@ -16,20 +15,18 @@ function Start() {
 }
 
 function Update () {
-	var newTrans : Transform;
-	var isFiring : System.Boolean;
-	
-	newTrans = GameObject.Find("Bird").GetComponent(Transform);
-	isFiring = GameObject.Find("Bird").GetComponent(birdMover).fired; 
-	var serialData = newTrans.localPosition.y+","+isFiring;
-	locationArray.push(serialData);
-	
 	if (ghostBirds.length > 0) {
 		playGhosts();
 	}
-	turnNum++;
+}
+
+function runUpdate(yPos: float, isFiring: boolean) { 
+	var serialData = yPos+","+isFiring;
+	locationArray.push(serialData);
 	
-	if (turnNum > 100) {
+	
+	turnNum++;
+	if (turnNum > 5000) {
 		pushToGhosts();
 	}
 }
@@ -37,6 +34,9 @@ function Update () {
 function pushToGhosts() {
 	//assuming this is called when the player gets to the end
 	//should probably also make a new ghost bird here, or in the bird object itself
+	
+	GameObject.Find("GhostBird").transform.position.x = GameObject.Find("Bird").transform.position.x; 
+	GameObject.Find("Bird").transform.position.x = GameObject.Find("Bird").transform.position.x - 1.5;
 	var tempArray  = new Array();
 	for(var strVar : System.String in locationArray) {
 		tempArray.push(strVar);
@@ -55,10 +55,11 @@ function playGhosts() {
 		
 		var serialData = ghostBirds[countGhost][turnNum];
 		var dataArray = new Array();
+		
 		dataArray = serialData.Split(","[0]);
 		ghostObj.GetComponent(Transform).localPosition.y = float.Parse(dataArray[0]);
 		if (dataArray[1] == "True") {
-			ghostObj.GetComponent(ghostMover).fired = true;
+			ghostObj.GetComponent(ghostMover).laserFire();
 		}
 				
 		countGhost++;

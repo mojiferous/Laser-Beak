@@ -37,6 +37,8 @@ function Update() {
     	}	
     }
     
+    var isFiring : boolean = false;
+    
     if(processMove) {
 	    moveDirection = transform.TransformDirection(moveDirection);
 		moveDirection *= speed;
@@ -45,6 +47,7 @@ function Update() {
     }
     if (Input.GetAxis("Fire1")) {
       if (fired == false && Time.time > nextFire){
+      	isFiring = true;
         nextFire = Time.time + fireRate;
         fireLaser();
       }
@@ -57,6 +60,8 @@ function Update() {
         animScript.rowNumber = 0;
       }
     }
+    
+    GameObject.Find("Global").GetComponent(global).runUpdate(this.transform.position.y,isFiring);
 }
 
 function fireLaser() {
