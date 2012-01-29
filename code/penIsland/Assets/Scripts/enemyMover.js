@@ -3,9 +3,8 @@ var isActive : boolean = false;
 
 function Update () {
  if (isActive == true) {
-   this.transform.position.x -= speed * Time.deltaTime;
-   print(this.transform.position.x);
-   if (this.transform.position.x < GameObject.Find("Global").GetComponent(global).boundLeft) {
+   this.transform.position.x += speed * Time.deltaTime;
+   if (this.transform.position.x > GameObject.Find("Global").GetComponent(global).boundLeft) {
      isActive = false;
      this.transform.position.x = GameObject.Find("Global").GetComponent(global).boundRight;
    }

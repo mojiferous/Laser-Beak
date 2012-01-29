@@ -2,10 +2,14 @@
 var laserPrefab: Transform; 
 var speed : float = 6.0;
 var fired: boolean = false;
-var laserSpeed: float = 2;
+var laserSpeed: float = 1;
 var laser;
 private var moveDirection : Vector3 = Vector3.zero;
 private var laserDirection: Vector3 = Vector3.zero;
+var animScript;
+animScript = GetComponent(birdAnimation);
+var fireRate : float = 0.5;
+private var nextFire : float = 0.0;
 
 function Update() {
 
@@ -40,20 +44,23 @@ function Update() {
 	    controller.Move(moveDirection * Time.deltaTime);
     }
     if (Input.GetAxis("Fire1")) {
-      if (fired == false){
+      if (fired == false && Time.time > nextFire){
+        nextFire = Time.time + fireRate;
         fireLaser();
       }
     }
     if (fired) {
-      laser.position.x += laserSpeed * .2;
-      if (laser.position.x >10){
+      laser.position.x -= laserSpeed * .05;
+      if (laser.position.x <-20){
         Destroy(laser.gameObject);
         fired = false;
+        animScript.rowNumber = 0;
       }
     }
 }
 
 function fireLaser() {
   fired = true;
-  laser = Instantiate(laserPrefab, transform.position, transform.rotation);
+  animScript.rowNumber = 1;
+  laser = Instantiate(laserPrefab, Vector3(transform.position.x - 5, transform.position.y - .1, transform.position.z), transform.rotation);
 }

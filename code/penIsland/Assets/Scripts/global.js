@@ -11,8 +11,8 @@ var numGhosts : int;
 var turnNum : int;
 
 function Start() {
-  boundRight = 14;
-  boundLeft = -2;
+  boundRight = -14;
+  boundLeft = 2;
 }
 
 function Update () {
@@ -58,14 +58,13 @@ function playGhosts() {
 		dataArray = serialData.Split(","[0]);
 		ghostObj.GetComponent(Transform).localPosition.y = float.Parse(dataArray[0]);
 		if (dataArray[1] == "True") {
-			print("Fire!");
 			ghostObj.GetComponent(ghostMover).fired = true;
 		}
 				
 		countGhost++;
 	}
 
-
+}
 /**
  * Utilty function to randomize an array
  */

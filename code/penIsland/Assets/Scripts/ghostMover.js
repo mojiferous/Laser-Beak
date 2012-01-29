@@ -10,8 +10,8 @@ function Update () {
 		laserFire();
 	}
 	if (laserFired) {
-    laser.position.x += laserSpeed * .2;
-    if (laser.position.x >10){
+    laser.position.x -= laserSpeed * .2;
+    if (laser.position.x < -10){
       Destroy(laser.gameObject);
       laserFired = false;
     }
@@ -21,5 +21,5 @@ function Update () {
 function laserFire() {
 	fired = false;
 	laserFired = true;
-  laser = Instantiate(laserPrefab, transform.position, transform.rotation);
+  laser = Instantiate(laserPrefab, Vector3(transform.position.x - 30, transform.position.y, transform.position.z), transform.rotation);
 }

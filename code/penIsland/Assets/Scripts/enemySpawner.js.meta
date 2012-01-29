@@ -1,2 +1,6 @@
 fileFormatVersion: 1
 guid: 82539661cd50c43e7846292b90353b05
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    lobsterPrefab: {fileID: 400000, guid: f8acf46a25af54b8c82965d8f65ebe48, type: 2}

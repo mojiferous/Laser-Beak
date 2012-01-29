@@ -1,6 +1,7 @@
-var enemyPrefab: Transform;
+var lobsterPrefab: Transform;
+var frogPrefab: Transform;
 // How often to spawn enemies
-var spawnInterval: float = 1.0;
+var spawnInterval: float = .05;
 // Randomized y position storage
 var cubeY : float = 0;
 // Timer var to store time since start.
@@ -9,16 +10,18 @@ var timer: float = 0.0;
 var lastTimer : float = 0.0;
 
 function Start () {
-  for(i = 0; i < 25; i++) {
+  for(i = 0; i < 5; i++) {
     cubeY = Random.Range(GameObject.Find("Global").GetComponent(global).boundBottom, GameObject.Find("Global").GetComponent(global).boundTop);
-    var cube = Instantiate(enemyPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY, 11.56675), Quaternion.identity);
-    GameObject.Find("Global").GetComponent(global).enemyArray.push(cube);
+    var lobster = Instantiate(lobsterPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY, 9.56675), Quaternion.identity);
+    GameObject.Find("Global").GetComponent(global).enemyArray.push(lobster);
+    var frog = Instantiate(frogPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY, 9.56675), Quaternion.identity);
+    GameObject.Find("Global").GetComponent(global).enemyArray.push(frog);
   }
 }
 
 function Update () {
   timer = timer + Time.deltaTime;
-  toSpawn = Mathf.Floor(Random.Range(0, 3));
+  toSpawn = Mathf.Floor(Random.Range(1, 3));
   if (timer-lastTimer >= spawnInterval) {
     activateEnemies(toSpawn);
     lastTimer = timer;
