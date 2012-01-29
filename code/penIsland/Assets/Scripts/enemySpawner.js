@@ -1,5 +1,7 @@
 var lobsterPrefab: Transform;
 var frogPrefab: Transform;
+var meatPrefab: Transform;
+var rockPrefab: Transform;
 // How often to spawn enemies
 var spawnInterval: float = .05;
 // Randomized y position storage
@@ -16,6 +18,10 @@ function Start () {
     GameObject.Find("Global").GetComponent(global).enemyArray.push(lobster);
     var frog = Instantiate(frogPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY, 9.56675), Quaternion.identity);
     GameObject.Find("Global").GetComponent(global).enemyArray.push(frog);
+    var meat = Instantiate(meatPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY, 9.56675), Quaternion.identity);
+    GameObject.Find("Global").GetComponent(global).enemyArray.push(meat);
+    var rock = Instantiate(rockPrefab, Vector3 (GameObject.Find("Global").GetComponent(global).boundRight, cubeY+6, 9.56675), Quaternion.identity);
+    GameObject.Find("Global").GetComponent(global).enemyArray.push(rock);
   }
 }
 
